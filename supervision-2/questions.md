@@ -34,7 +34,7 @@ In the following code we would like to set a value for the variable `N`. Find th
 
 int main() {
 
-    int N = 0;
+    int N = 0; // Change the value of N
 
     void *array = malloc(34);
 
