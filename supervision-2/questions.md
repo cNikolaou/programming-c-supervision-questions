@@ -129,9 +129,109 @@ struct arena {
 
 ---
 ## Question 7
+What will the following C program print?
+
+```c
+
+void fun(int y) {
+    static int x = 2;
+    x++;
+    printf("%d\n", y + x);
+}
+
+int main() {
+
+    fun(4)
+    fun(2)
+
+}
+```
 
 ---
 ## Question 8
+What does the following program do?
+
+```c
+struct my_vector{
+    int x, y;
+} vec;
+
+int *get_x()
+{
+    return &vec.x;
+}
+
+int main() {
+
+    int vector_point = get_x();
+}
+
+```
 
 ---
 ## Question 9
+What does the following program do?
+
+```c
+int main() {
+
+    int x = 0; 
+    int y = 10;
+    int i = 0;
+
+    {
+        for (; i < 10; i++) {
+            x += y;
+        }
+        int z = x + y;
+    }
+
+    printf("%d\n", x);
+    printf("%d\n", y);
+    printf("%d\n", z);
+    printf("%d\n", i);
+
+}
+```
+
+
+---
+## Question 10
+A file named `in.txt` contains the following entries:
+
+```
+5
+15 21
+6 24 11
+1
+2 5
+```
+
+Write a C program that:
+1. Reads the numbers from the file `in.txt`
+2. Sorts the numbers into ascending order
+3. Writes the numbers into another file called `out.txt`
+
+---
+## Question 11
+
+In C++ there is container called `vector` which works as a dynamically allocated array. In this excercise we would like to implement it's two basic functionalities `push_back()`, which takes a value and places it at the end of the container, and `pop_back()`, which removes (and returns) the last value of the container. We are going to do that in C.
+
+You are given the structure:
+
+```c
+struct my_vec {
+    int *array;
+    // you can add more varibles that will help you to anser the question
+};
+
+typedef struct my_vec vec;
+```
+
+Implement the two functions:
+1. `void push_back(int value, vec *v)` which gets a value and places it at the end of the container. If the container is full then it needs to reallocate memory to be able to hold twice as much data. This is done to avoid reallocating everytime a new element is pushed back.
+2. `int pop_back(vec *v)` which erases the last value from the container and returns the value. If, after removing the value, less than half of the allocated size for the array is used then reallocate the pointer to reduce the amount of memory used.
+
+You will need to:
+* Take care of initialiseing the pointer of the container `int *array` in order to hold the first value.
+* Use additional variables within the structure to keep track of the state of the container.
