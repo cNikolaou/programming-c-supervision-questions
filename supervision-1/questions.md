@@ -159,6 +159,7 @@ printf("------------\n");
 ```
 
 Examine the code. We are interested in the part after the `--- expressions to evaluate ---` comment:
+
 1. Some of the `printf` expression are wrong. Figure out wich expressions are wrong.
 2. Find out what the rest of the expression will print.
 
