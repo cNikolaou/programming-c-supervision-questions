@@ -42,17 +42,17 @@ int main() {
     short *sp = &array[0];
     long *lp = &array[0];
 
-    for (int i = 0; i < N; ++i) {
+    for (int i = 0; i != N; ++i) {
         cp[i] = '5';
         printf("%c\n", cp[i]);
     }
 
-    for (int i = 0; i < N; ++i) {
+    for (int i = 0; i != N; ++i) {
         sp[i] = 10;
         printf("%d\n", sp[i]);
     }
 
-    for (int i = 0; i < N; ++i) {
+    for (int i = 0; i != N; ++i) {
         lp[i] = 15;
         printf("%ld\n", lp[i]);
     }
@@ -65,8 +65,11 @@ int main() {
 ## Question 3
 
 In the code given in the previous question what will happen if:
+
 1. We set `int N = MAX_INT` ? Do you think this is a bug?
+
 2. We set `int N = -1` ? Do you think this is a bug?
+
 3. If you think that these values for `N` are problematic, is there any way to debug the program in each case?
 
 ---
@@ -90,11 +93,12 @@ int16_t divide(int32_t a, int32_t b) {
 Are there any problems with the following function? How can we find out?
 
 ```c
-void foo() 
-{ 
+void foo() { 
    int *ptr = (int *) malloc(sizeof(int)); 
   
-   /* Do some work */
+   *ptr = 10;
+
+   printf("%d", *ptr * 2);
   
    return;
 } 
@@ -123,8 +127,11 @@ struct arena {
 ```
 
 1. Explain simply how the arena works. Also:
-    1. What is the purpose of each variable?
-    2. Can you provide a schematic of the logic behind the arena?
+
+    a. What is the purpose of each variable?
+
+    b. Can you provide a schematic of the logic behind the arena?
+
 2. Is there any limitations with the implementation of the arena? If yes, then explain how you would fix it.
 
 ---
@@ -141,8 +148,8 @@ void fun(int y) {
 
 int main() {
 
-    fun(4)
-    fun(2)
+    fun(4);
+    fun(2);
 
 }
 ```
@@ -170,7 +177,7 @@ int main() {
 
 ---
 ## Question 9
-What does the following program do?
+What will be the value of `x`, `y`, `z`, `i` at the end of the `main()` function (where the comment is)?
 
 ```c
 int main() {
@@ -186,11 +193,7 @@ int main() {
         int z = x + y;
     }
 
-    printf("%d\n", x);
-    printf("%d\n", y);
-    printf("%d\n", z);
-    printf("%d\n", i);
-
+    // What is the value of x, y, z, i
 }
 ```
 
@@ -229,9 +232,60 @@ typedef struct my_vec vec;
 ```
 
 Implement the two functions:
+
 1. `void push_back(int value, vec *v)` which gets a value and places it at the end of the container. If the container is full then it needs to reallocate memory to be able to hold twice as much data. This is done to avoid reallocating everytime a new element is pushed back.
+
 2. `int pop_back(vec *v)` which erases the last value from the container and returns the value. If, after removing the value, less than half of the allocated size for the array is used then reallocate the pointer to reduce the amount of memory used.
 
 You will need to:
+
 * Take care of initialiseing the pointer of the container `int *array` in order to hold the first value.
 * Use additional variables within the structure to keep track of the state of the container.
+
+---
+## Question 12
+Is there any bug in any of the following programs?
+
+Program 1:
+```c
+int main()
+{
+    char hello[] = "hello";
+    char *hp = hello;
+}
+```
+
+Program 2:
+
+```c
+int main()
+{
+    char hello[6];
+    char *hp = "hello";
+    hello = hp;
+}
+```
+
+---
+## Question 13
+What is the value of `i` on `Position 1` and on `Position 2`?
+
+
+```c
+int main() {
+    int i = 0;
+    
+    {
+        int i = 1;
+
+        for (int i = 2; i < 5; ++i) {
+            
+            // do something
+        }
+
+        // Position 1
+    }
+    
+    // Position 2
+}
+```
