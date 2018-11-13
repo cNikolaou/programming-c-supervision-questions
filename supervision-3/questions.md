@@ -66,22 +66,67 @@ fclose(fp);
 
 ## Question 4
 
-
+Why might it be useful to define a copy constructor for a C++ class? Give an example of a copy constructor for a simple class.
 
 ---
 
 ## Question 5
 
+Why might it be useful to explicitly define the assignment operator (=) for a C++ class? Give an example definition of the assignment operator for a simple class.
+
 ---
 
 ## Question 6
+
+Why a function might be declared virtual in a C++ superclass?
 
 ---
 
 ## Question 7
 
+What is the difference between `malloc()` and `free()` versus `new` and `delete`?
+
 ---
 
 ## Question 8
+
+Consider the following C function that receives a string as an argument and returns a reversed string as a result. The `strlen` function returns the number of the characters in the string, e.g. `strlen("hello")` returns `5`.
+
+```c
+#include <string.h>
+#include <stdlib.h>
+
+char *reverse(char *in_string) {
+    int len = strlen(in_string);
+    char out_string[len];
+    for (int i = 0; i < len; ++i) {
+        out_string[len - i - 1] =  in_string[i];
+    }
+    return out_string;
+}
+```
+
+
+1. Identify three bugs with this function.
+
+2. Write a correct version of this function.
+
+---
+
+## Question 9
+
+
+---
+
+## Question 10
+
+
+---
+
+## Question 11
+
+---
+
+## Question 12
 
 ---
