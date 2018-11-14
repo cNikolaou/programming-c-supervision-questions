@@ -115,18 +115,130 @@ char *reverse(char *in_string) {
 
 ## Question 9
 
+Is there any error with `Base b;` and/or with `Base *bp;` in the `main` function?
+
+```c
+#include<iostream> 
+using namespace std; 
+  
+class Base  { 
+public: 
+    virtual void show() = 0; 
+}; 
+  
+int main() { 
+    Base b; 
+    Base *bp; 
+    return 0; 
+} 
+```
+
 
 ---
 
 ## Question 10
+
+Which constructors are called and in which order?
+
+```c
+#include<iostream> 
+   
+using namespace std; 
+class Base1 { 
+ public: 
+    Base1() { 
+         //constructor for Base1  
+    } 
+}; 
+   
+class Base2 { 
+ public: 
+    Base2() { 
+        //constructor for Base2  
+    } 
+}; 
+   
+class Derived: public Base1, public Base2 { 
+   public: 
+    Derived() {  
+        //constructor for Delivered  
+    } 
+}; 
+   
+int main() { 
+   Derived d; 
+   return 0; 
+} 
+```
+
 
 
 ---
 
 ## Question 11
 
+Is there any problem with the following program?
+
+```c
+#include<iostream> 
+using namespace std; 
+  
+int main() { 
+    int *ptr = new int; 
+    delete ptr; 
+    delete ptr; 
+    return 0; 
+}
+```
+
 ---
 
 ## Question 12
+
+Is there any problem with the following program?
+
+```c
+#include <iostream> 
+using namespace std; 
+  
+class Test { 
+  int x; 
+  Test() { x = 5;} 
+}; 
+  
+int main() { 
+   Test *t = new Test; 
+   cout << t->x; 
+}
+```
+
+---
+
+## Question 13
+
+What will the following program print?
+
+```c
+#include <iostream> 
+using namespace std; 
+  
+template <typename T> 
+void fun(const T&x) { 
+    static int count = 0; 
+    cout << "x = " << x << " count = " << count << endl; 
+    ++count; 
+    return; 
+} 
+  
+int main() { 
+    fun<int> (1);  
+    cout << endl; 
+    fun<int>(1);  
+    cout << endl; 
+    fun<double>(1.1); 
+    cout << endl; 
+    return 0; 
+} 
+```
 
 ---
