@@ -242,3 +242,64 @@ int main() {
 ```
 
 ---
+
+## Question 14
+
+Is the following program correct? If yes, what will it print? If no, why is it wrong?
+
+```c
+#include<iostream>
+using namespace std;
+ 
+class Base {
+public:
+    virtual void show() { 
+        printf("In Base\n"); 
+    }
+};
+ 
+class Derived: public Base {
+public:
+    void show() { 
+        printf("In Derived\n"); 
+    }
+};
+ 
+int main(void) {
+
+    Derived d;
+    d.show();
+
+    Base *bp = new Derived;
+    bp->show();
+ 
+    Base &br = *bp;
+    br.show();
+ 
+    return 0;
+}
+```
+
+---
+
+## Question 15
+
+Add a second parameter to the following template class and add one private member of that type. Then create an object of that class whith first type `int` and second type `double`. What is the size of the object in bytes?
+
+```c
+#include <iostream> 
+using namespace std; 
+  
+template <typename T> 
+class MyClass { 
+    private:
+        T x,y;
+        static double d;
+} 
+  
+int main() { 
+    
+    MyClass<int> obj = new MyClass<int>();
+
+} 
+```
