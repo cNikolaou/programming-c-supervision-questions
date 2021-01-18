@@ -303,3 +303,69 @@ int main() {
 
 } 
 ```
+
+## Question 16
+
+What will be printed in the standard output.
+
+```
+#include<iostream>
+using namespace std;
+ 
+class DynArray {
+        int *arr;
+        size_t size;
+    
+    public: 
+        DynArray(size_t s) {
+            size = s;
+            arr = (int *) malloc(sizeof(int) * s);
+            
+            for (size_t i = 0; i < size; i++) {
+                arr[i] = 0;
+            }
+        }    
+        
+        void add(int value, int index) {
+            arr[index] = value;
+        }
+        
+        int read(int index) const {
+            return arr[index];
+        }
+        
+        size_t get_size() const {
+            return size;
+        }
+        
+         DynArray(const DynArray& t) {
+            size = t.get_size();
+            
+            arr = (int *) malloc(sizeof(int) * size);
+            
+            for (size_t i = 0; i < size; i++) {
+                arr[i] = t.read(i);   
+            }
+        }  
+};
+ 
+int main(void) {
+
+    DynArray da1(10);
+    da1.add(10,5);
+    
+    DynArray da2(da1);
+    DynArray da3 = da1;
+    DynArray da4(10);
+    da4 = da1;
+    
+    da1.add(20,5);
+    
+    cout << da1.read(5) << endl;
+    cout << da2.read(5) << endl;
+    cout << da3.read(5) << endl;
+    cout << da4.read(5) << endl;
+ 
+    return 0;
+}
+```
